@@ -1,12 +1,9 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames/bind';
 import { injectIntl, intlShape, defineMessages } from 'react-intl';
 import { reduxForm } from 'redux-form';
-import { ModalLayout, withModal, ModalField, ModalContentHeading } from 'components/main/modal';
-import styles from './launchAttachmentModal.scss';
-
-const cx = classNames.bind(styles);
+import { ModalLayout, withModal } from 'components/main/modal';
+import './attachmentModal.scss';
 
 const messages = defineMessages({
   title: {
@@ -47,7 +44,7 @@ export class AttachmentModal extends Component {
   };
 
   render() {
-    const { intl, handleSubmit, data } = this.props;
+    const { intl, handleSubmit } = this.props;
     const okButton = {
       text: intl.formatMessage(messages.close),
       onClick: (closeModal) => {
@@ -57,14 +54,7 @@ export class AttachmentModal extends Component {
 
     return (
       <ModalLayout title={intl.formatMessage(messages.title)} okButton={okButton}>
-        <form>
-          <ModalField>
-            <ModalContentHeading text={intl.formatMessage(messages.title)} />
-          </ModalField>
-          <ModalField>
-            <div className={cx('launch-name')}>{`${data.launch.name} #${data.launch.number}`}</div>
-          </ModalField>
-        </form>
+        <form />
       </ModalLayout>
     );
   }
