@@ -22,13 +22,13 @@
 import { storiesOf } from '@storybook/react';
 import { host } from 'storybook-host';
 import { withReadme } from 'storybook-readme';
-import { AttachmentModal } from './launchAttachmentModal';
+import { AttachmentModal, AttachmentCodeModal } from '.';
 import README from './README.md';
 
-storiesOf('Pages/inside/launchesPage/LaunchAttachmentModal', module)
+storiesOf('Pages/inside/logPage/AttachmentModal', module)
   .addDecorator(
     host({
-      title: 'AttachmentModal component',
+      title: 'Attachment Modal',
       align: 'center middle',
       backdrop: 'rgba(70, 69, 71, 0.2)',
       background: '#ffffff',
@@ -37,11 +37,14 @@ storiesOf('Pages/inside/launchesPage/LaunchAttachmentModal', module)
     }),
   )
   .addDecorator(withReadme(README))
-  .add('default state', () => (
-    <AttachmentModal
-      data={{ launch: {}, onEdit: () => {} }}
-      // initialize={ ()=>{}}
-      // handleSubmit={ ()=>{}}
-      // intl={ ()=>{}}
+  .add('Without any content', () => <AttachmentModal data={{ launch: {}, onEdit: () => {} }} />)
+  .add('Code content with hljs', () => (
+    <AttachmentCodeModal
+      data={{
+        launch: {},
+        onEdit: () => {},
+        language: 'javascript',
+        content: 'alert("1,2,3...");',
+      }}
     />
   ));
