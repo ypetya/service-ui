@@ -1,10 +1,24 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, intlShape } from 'react-intl';
+import { injectIntl, intlShape, defineMessages } from 'react-intl';
 import { reduxForm } from 'redux-form';
 import { ModalLayout, withModal } from 'components/main/modal';
-import { messages } from './messages';
 import './attachmentModal.scss';
+
+const messages = defineMessages({
+  title: {
+    id: 'AttachmentDialog.title',
+    defaultMessage: 'Attachment',
+  },
+  close: {
+    id: 'AttachmentDialog.close',
+    defaultMessage: 'Close',
+  },
+  descriptionPlaceholder: {
+    id: 'AttachmentDialog.editor',
+    defaultMessage: 'Editor',
+  },
+});
 
 @withModal('launchAttachmentModal')
 @injectIntl
