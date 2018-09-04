@@ -1,57 +1,55 @@
-import 'highlight.js/styles/github.css';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl, intlShape } from 'react-intl';
 import { reduxForm } from 'redux-form';
 import { ModalLayout, withModal } from 'components/main/modal';
-import Highlight from 'react-highlight';
 import { messages } from './messages';
+import { WithZipJs } from './har/WithZipJs';
+import { PerfCascade } from './har/PerfCascade';
 import './attachmentModal.scss';
 
-@withModal('attachmentCodeModal')
+@withModal('attachmentHarFileModal')
 @injectIntl
 @reduxForm({
-  form: 'attachmentCodeForm',
+  form: 'attachmentHarFileForm',
 })
-export class AttachmentCodeModal extends Component {
+export class AttachmentHarFileModal extends Component {
   static propTypes = {
     data: PropTypes.shape({
       launch: PropTypes.object,
       onEdit: PropTypes.func,
-      language: PropTypes.string,
-      content: PropTypes.string,
+      harData: PropTypes.object,
     }).isRequired,
     initialize: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     intl: intlShape.isRequired,
   };
-  componentDidMount() {
-    this.props.initialize(this.props.data.launch);
-  }
+
   saveLaunchAndCloseModal = (closeModal) => (launch) => {
     this.props.data.onEdit(launch);
     closeModal();
   };
 
-  render() {
+  okButton = (intl) => ({
+    text: intl.formatMessage(messages.close),
+    onClick: (closeModal) => {
+      this.props.handleSubmit(this.saveLaunchAndCloseModal(closeModal))();
+    },
+  });
+
+  render = () => {
     const {
       intl,
-      handleSubmit,
-      data: { language, content },
+      data: { harData },
     } = this.props;
-    const okButton = {
-      text: intl.formatMessage(messages.close),
-      onClick: (closeModal) => {
-        handleSubmit(this.saveLaunchAndCloseModal(closeModal))();
-      },
-    };
-
     return (
-      <ModalLayout title={intl.formatMessage(messages.title)} okButton={okButton}>
+      <ModalLayout title={intl.formatMessage(messages.title)} okButton={this.okButton(intl)}>
         <form>
-          <Highlight {...language}>{content}</Highlight>
+          <WithZipJs>
+            <PerfCascade harData={harData} />
+          </WithZipJs>
         </form>
       </ModalLayout>
     );
-  }
+  };
 }

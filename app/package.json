@@ -33,6 +33,7 @@
     "intl": "^1.2.5",
     "moment": "^2.22.1",
     "promise-polyfill": "^8.1.0",
+    "perf-cascade": "^2.5.4",
     "prop-types": "^15.6.1",
     "qhistory": "^1.0.0",
     "qs": "^6.5.2",
