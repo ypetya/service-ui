@@ -22,7 +22,7 @@
 import { storiesOf } from '@storybook/react';
 import { host } from 'storybook-host';
 import { withReadme } from 'storybook-readme';
-import { AttachmentModal, AttachmentCodeModal } from '.';
+import { AttachmentModal, AttachmentCodeModal, AttachmentImageModal } from '.';
 import README from './README.md';
 
 storiesOf('Pages/inside/logPage/AttachmentModal', module)
@@ -40,6 +40,16 @@ storiesOf('Pages/inside/logPage/AttachmentModal', module)
   .add('Without any content', () => <AttachmentModal data={{ launch: {}, onEdit: () => {} }} />)
   .add('Code content with hljs', () => (
     <AttachmentCodeModal
+      data={{
+        launch: {},
+        onEdit: () => {},
+        language: 'javascript',
+        content: 'alert("1,2,3...");',
+      }}
+    />
+  ))
+  .add('Image content', () => (
+    <AttachmentImageModal
       data={{
         launch: {},
         onEdit: () => {},

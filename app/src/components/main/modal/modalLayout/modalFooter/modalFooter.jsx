@@ -52,9 +52,9 @@ export class ModalFooter extends Component {
       customButton,
       onClickCancel,
       onClickOk,
-      showConfirmation,
+      showConfirmation = true,
       confirmationMessage,
-      confirmationWarning,
+      confirmationWarning = 'Jksk',
       closeConfirmed,
     } = this.props;
 
@@ -91,6 +91,7 @@ export class ModalFooter extends Component {
               </BigButton>
             </div>
           )}
+          {customButton ? <div className={cx('button-container')}>{customButton}</div> : null}
           {okButton && (
             <div className={cx('button-container')}>
               <BigButton
@@ -102,7 +103,6 @@ export class ModalFooter extends Component {
               </BigButton>
             </div>
           )}
-          {customButton ? <div className={cx('button-container')}>{customButton}</div> : null}
         </div>
       </div>
     );
