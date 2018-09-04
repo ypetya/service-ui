@@ -22,8 +22,9 @@
 import { storiesOf } from '@storybook/react';
 import { host } from 'storybook-host';
 import { withReadme } from 'storybook-readme';
-import { AttachmentModal, AttachmentCodeModal } from '.';
+import { AttachmentModal, AttachmentCodeModal, AttachmentHarFileModal } from '.';
 import README from './README.md';
+import harData from './example.har';
 
 storiesOf('Pages/inside/logPage/AttachmentModal', module)
   .addDecorator(
@@ -32,7 +33,7 @@ storiesOf('Pages/inside/logPage/AttachmentModal', module)
       align: 'center middle',
       backdrop: 'rgba(70, 69, 71, 0.2)',
       background: '#ffffff',
-      height: 800,
+      height: 1500,
       width: 800,
     }),
   )
@@ -45,6 +46,15 @@ storiesOf('Pages/inside/logPage/AttachmentModal', module)
         onEdit: () => {},
         language: 'javascript',
         content: 'alert("1,2,3...");',
+      }}
+    />
+  ))
+  .add('Har file view', () => (
+    <AttachmentHarFileModal
+      data={{
+        launch: {},
+        onEdit: () => {},
+        harData,
       }}
     />
   ));
