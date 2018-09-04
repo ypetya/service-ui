@@ -52,9 +52,9 @@ export class ModalFooter extends Component {
       customButton,
       onClickCancel,
       onClickOk,
-      showConfirmation,
+      showConfirmation = true,
       confirmationMessage,
-      confirmationWarning,
+      confirmationWarning = 'Jksk',
       closeConfirmed,
     } = this.props;
 
