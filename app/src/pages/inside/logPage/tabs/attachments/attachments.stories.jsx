@@ -37,7 +37,7 @@ function fetchAttachments() {
 
 const attachmentService = { fetchAttachments };
 
-storiesOf('Pages/logPage/Attachment', module)
+storiesOf('Pages/inside/logPage/Attachment', module)
   .addDecorator(
     host({
       title: 'Log Attachment',
