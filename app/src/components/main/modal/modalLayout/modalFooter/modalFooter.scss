@@ -40,10 +40,12 @@
   }
 }
 .buttons-block {
+  float: right;
   white-space: nowrap;
   display: flex;
   justify-content: space-between;
   align-content: flex-end;
+  flex-direction: row-reverse;
 }
 
 .button-container {
