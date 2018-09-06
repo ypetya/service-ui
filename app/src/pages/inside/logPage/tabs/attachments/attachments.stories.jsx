@@ -35,14 +35,14 @@ import {
   txt,
   zip,
   rar,
-  taz,
+  tgz,
   tar,
   gzip,
 } from 'common/img/launch/attachments';
 import Attachments from './attachments';
 import README from './README.md';
 
-const fileTypes = { xml, php, json, js, har, css, csv, html, pic, txt, zip, rar, taz, tar, gzip };
+const fileTypes = { xml, php, json, js, har, css, csv, html, pic, txt, zip, rar, tgz, tar, gzip };
 const attachment = (id, fileType, text) => ({
   id,
   fileType,

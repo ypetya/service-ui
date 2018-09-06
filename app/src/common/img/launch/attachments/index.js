@@ -12,8 +12,8 @@ import archive from 'common/img/launch/attachments/archive.svg';
 
 const zip = archive;
 const rar = archive;
-const taz = archive;
+const tgz = archive;
 const tar = archive;
 const gzip = archive;
 
-export { xml, php, json, js, har, css, csv, html, pic, txt, zip, rar, taz, tar, gzip };
+export { xml, php, json, js, har, css, csv, html, pic, txt, zip, rar, tgz, tar, gzip };
