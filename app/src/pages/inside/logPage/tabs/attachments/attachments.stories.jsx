@@ -22,20 +22,42 @@
 import { storiesOf } from '@storybook/react';
 import { host } from 'storybook-host';
 import { withReadme } from 'storybook-readme';
+import {
+  xml,
+  php,
+  json,
+  js,
+  har,
+  css,
+  csv,
+  html,
+  pic,
+  txt,
+  zip,
+  rar,
+  taz,
+  tar,
+  gzip,
+} from 'common/img/launch/attachments';
 import Attachments from './attachments';
 import README from './README.md';
 
-function fetchAttachments() {
-  return Promise.resolve(
-    [...Array(20)].map((d, i) => ({
-      id: i,
-      src: 'http://dev.epm-rpp.projects.epam.com:8080/ui/img/launch/attachments/csv.svg',
-      alt: 'It is only an icon for css attachments',
-    })),
-  );
-}
+const fileTypes = { xml, php, json, js, har, css, csv, html, pic, txt, zip, rar, taz, tar, gzip };
+const attachment = (id, fileType, text) => ({
+  id,
+  fileType,
+  src: fileTypes[fileType],
+  alt: text,
+});
+const pickRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
+const randomAttachment = (id) => {
+  const fileType = pickRandom(Object.keys(fileTypes));
+  return attachment(id, fileType, 'This is an icon');
+};
 
-const attachmentService = { fetchAttachments };
+const attachmentService = {
+  fetchAttachments: () => Promise.resolve([...Array(20)].map((d, id) => randomAttachment(id))),
+};
 
 storiesOf('Pages/inside/logPage/Attachment', module)
   .addDecorator(
@@ -50,13 +72,3 @@ storiesOf('Pages/inside/logPage/Attachment', module)
   )
   .addDecorator(withReadme(README))
   .add('default state', () => <Attachments attachmentService={attachmentService} />);
-// .add('with text', () => <BigButton>Button title</BigButton>)
-// .add('with roundedCorners & text', () => <BigButton roundedCorners>Button title</BigButton>)
-// .add('colored', () => <BigButton color="organish">Button title</BigButton>)
-// .add('disabled', () => <BigButton disabled>Button title</BigButton>)
-// .add('with actions', () => <BigButton onClick={action('clicked')}>Button title</BigButton>)
-// .add('disabled with actions', () => (
-//   <BigButton disabled onClick={action('clicked')}>
-//     Button title
-//   </BigButton>
-// ));

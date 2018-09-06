@@ -52,9 +52,9 @@ export default class Attachments extends React.Component {
             this.onClickThumb();
           }}
         >
-          {this.state.attachments.map((a) => (
-            <div key={a.id}>
-              <img src={a.src} alt={a.alt} />
+          {this.state.attachments.map((attachment) => (
+            <div key={attachment.id}>
+              <img src={attachment.src} alt={attachment.alt} />
             </div>
           ))}
         </Carousel>
