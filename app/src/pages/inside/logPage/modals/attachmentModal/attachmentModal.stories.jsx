@@ -21,7 +21,12 @@
 
 import { storiesOf } from '@storybook/react';
 import { withReadme } from 'storybook-readme';
-import { AttachmentModal, AttachmentCodeModal, AttachmentHarFileModal } from '.';
+import {
+  AttachmentModal,
+  AttachmentCodeModal,
+  AttachmentHarFileModal,
+  AttachmentImageModal,
+} from '.';
 import README from './README.md';
 import harData from './example.har';
 
@@ -44,6 +49,15 @@ storiesOf('Pages/inside/logPage/AttachmentModal', module)
         launch: {},
         onEdit: () => {},
         harData,
+      }}
+    />
+  ))
+  .add('Image content', () => (
+    <AttachmentImageModal
+      data={{
+        launch: {},
+        onEdit: () => {},
+        language: 'javascript',
       }}
     />
   ));
