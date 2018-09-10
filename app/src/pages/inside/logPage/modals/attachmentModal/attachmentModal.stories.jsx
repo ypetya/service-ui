@@ -57,7 +57,9 @@ storiesOf('Pages/inside/logPage/AttachmentModal', module)
       data={{
         launch: {},
         onEdit: () => {},
-        language: 'javascript',
+        imageUrl:
+          'https://vignette.wikia.nocookie.net/despicableme/images/c/ca/Bob-from-the-minions-movie.jpg/revision/latest?cb=20151224154354',
+        handleSubmit: () => {},
       }}
     />
   ));

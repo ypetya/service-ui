@@ -83,7 +83,7 @@ export class ModalFooter extends Component {
             <span className={cx('warning-message')}>{warningMessage}</span>
           </div>
         )}
-        <div className={cx('buttons-block')}>
+        <div className={cx('buttons-block', customButton ? 'has-custom-button' : null)}>
           {cancelButton && (
             <div className={cx('button-container')}>
               <BigButton color={'gray-60'} onClick={onClickCancel}>

@@ -37,8 +37,7 @@ export class AttachmentImageModal extends Component {
     data: PropTypes.shape({
       launch: PropTypes.object,
       onEdit: PropTypes.func,
-      language: PropTypes.string,
-      content: PropTypes.string,
+      imageUrl: PropTypes.string,
     }).isRequired,
     initialize: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
@@ -57,10 +56,10 @@ export class AttachmentImageModal extends Component {
     closeModal();
   };
 
-  okButton = (intl, handleSubmit) => ({
+  okButton = (intl) => ({
     text: intl.formatMessage(messages.close),
     onClick: (closeModal) => {
-      handleSubmit(this.saveLaunchAndCloseModal(closeModal))();
+      this.props.handleSubmit(this.saveLaunchAndCloseModal(closeModal))();
     },
   });
 
@@ -100,7 +99,7 @@ export class AttachmentImageModal extends Component {
             style={style}
             id="attachment-image"
             alt="attachment"
-            src="https://vignette.wikia.nocookie.net/despicableme/images/c/ca/Bob-from-the-minions-movie.jpg/revision/latest?cb=20151224154354"
+            src={this.props.data.imageUrl}
           />
         </div>
       </ModalLayout>
