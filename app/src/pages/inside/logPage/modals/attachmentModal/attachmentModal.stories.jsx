@@ -39,7 +39,7 @@ storiesOf('Pages/inside/logPage/AttachmentModal', module)
         launch: {},
         onEdit: () => {},
         language: 'javascript',
-        content: 'alert("1,2,3...");',
+        content: withReadme.toString(),
       }}
     />
   ))
@@ -57,7 +57,6 @@ storiesOf('Pages/inside/logPage/AttachmentModal', module)
       data={{
         launch: {},
         onEdit: () => {},
-        language: 'javascript',
       }}
     />
   ));

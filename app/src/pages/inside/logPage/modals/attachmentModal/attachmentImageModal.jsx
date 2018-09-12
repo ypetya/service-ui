@@ -37,8 +37,6 @@ export class AttachmentImageModal extends Component {
     data: PropTypes.shape({
       launch: PropTypes.object,
       onEdit: PropTypes.func,
-      language: PropTypes.string,
-      content: PropTypes.string,
     }).isRequired,
     initialize: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
