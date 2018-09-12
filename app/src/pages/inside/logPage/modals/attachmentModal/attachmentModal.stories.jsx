@@ -20,22 +20,17 @@
  */
 
 import { storiesOf } from '@storybook/react';
-import { host } from 'storybook-host';
 import { withReadme } from 'storybook-readme';
-import { AttachmentModal, AttachmentCodeModal, AttachmentImageModal } from '.';
+import {
+  AttachmentModal,
+  AttachmentCodeModal,
+  AttachmentHarFileModal,
+  AttachmentImageModal,
+} from '.';
 import README from './README.md';
+import harData from './example.har';
 
 storiesOf('Pages/inside/logPage/AttachmentModal', module)
-  .addDecorator(
-    host({
-      title: 'Attachment Modal',
-      align: 'center middle',
-      backdrop: 'rgba(70, 69, 71, 0.2)',
-      background: '#ffffff',
-      height: 800,
-      width: 800,
-    }),
-  )
   .addDecorator(withReadme(README))
   .add('Without any content', () => <AttachmentModal data={{ launch: {}, onEdit: () => {} }} />)
   .add('Code content with hljs', () => (
@@ -44,7 +39,16 @@ storiesOf('Pages/inside/logPage/AttachmentModal', module)
         launch: {},
         onEdit: () => {},
         language: 'javascript',
-        content: 'alert("1,2,3...");',
+        content: withReadme.toString(),
+      }}
+    />
+  ))
+  .add('Har file view', () => (
+    <AttachmentHarFileModal
+      data={{
+        launch: {},
+        onEdit: () => {},
+        harData,
       }}
     />
   ))
@@ -53,8 +57,6 @@ storiesOf('Pages/inside/logPage/AttachmentModal', module)
       data={{
         launch: {},
         onEdit: () => {},
-        language: 'javascript',
-        content: 'alert("1,2,3...");',
       }}
     />
   ));
