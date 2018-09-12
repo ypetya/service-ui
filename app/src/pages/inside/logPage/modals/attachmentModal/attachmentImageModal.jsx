@@ -1,31 +1,15 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import { injectIntl, intlShape, defineMessages } from 'react-intl';
+import { injectIntl, intlShape } from 'react-intl';
 import { reduxForm } from 'redux-form';
 import { ModalLayout, withModal } from 'components/main/modal';
+import { messages } from './messages';
 import rotateImage from './img/rotate-left-icon.svg';
-
 import styles from './attachmentImageModal.scss';
 
 const cx = classNames.bind(styles);
-
 const classes = cx('toleft', null, {});
-
-const messages = defineMessages({
-  title: {
-    id: 'AttachmentDialog.title',
-    defaultMessage: 'Attachment',
-  },
-  close: {
-    id: 'AttachmentDialog.close',
-    defaultMessage: 'Close',
-  },
-  descriptionPlaceholder: {
-    id: 'AttachmentDialog.editor',
-    defaultMessage: 'Editor',
-  },
-});
 
 @withModal('attachmentImageModal')
 @injectIntl
