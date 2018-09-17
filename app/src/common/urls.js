@@ -88,7 +88,8 @@ export const URLS = {
       ids,
       history_depth: historyDepth,
     })}`,
-// TODO: use these
+  attachment: (activeProject, itemId) => 
+    `${urlBase}${activeProject}/${itemId}${getQueryParams({access_token: getToken()})}`,
   logItem: (activeProject, itemId, level) =>
     `${urlBase}${activeProject}/log${getQueryParams({
       'filter.eq.item': itemId,

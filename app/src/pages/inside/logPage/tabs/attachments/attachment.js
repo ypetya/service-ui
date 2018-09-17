@@ -12,7 +12,7 @@ const attachmentWithIcon = (props) => {
     if (props.binary_content) {
         const content_type = (props.binary_content.content_type || '').split('/');
         const fileType = [1];
-        const src=...
+        const src= 'TODO'
         if(content_type[0] === 'image') {
 
         }

@@ -3,15 +3,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { Carousel } from 'react-responsive-carousel';
-
+import { connect } from 'react-redux';
+import { activeProjectSelector } from 'controllers/user';
 import 'react-responsive-carousel/lib/styles/carousel.css';
 import styles from './attachments.scss';
 
 const cx = classNames.bind(styles);
 
+@connect((state) => ({
+  activeProject: activeProjectSelector(state),
+}))
 export default class Attachments extends React.Component {
   static propTypes = {
     attachmentService: PropTypes.object.isRequired,
+    activeProject: PropTypes.string.isRequired,
+    itemId: PropTypes.string.isRequired,
+    level: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -23,7 +30,9 @@ export default class Attachments extends React.Component {
   }
 
   async componentWillMount() {
-    const attachments = await this.props.attachmentService.fetchAttachments();
+    const attachments = await this.props.attachmentService.fetchAttachments(
+      this.props
+    );
     this.setState({ attachments });
   }
 

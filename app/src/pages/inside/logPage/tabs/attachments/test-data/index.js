@@ -119,20 +119,18 @@ const data = {
     "5b83fa4397a1c00001150e32": php
 }
 
-const fetchAttachments = (page, count) => Promise.resolve(
+const generateFakeAttachments = (page, count) => 
     pickNRandom(attachments, count).map(
         (attachment, index) => ({
             ...attachment,
             pageNumber: page,
             pageIndex: index
-        }))
-    );
+        }));
 
-const fetchAttachmentContent = (id) => data[id] ||
+const generateFakeAttachmentContent = (id) => data[id] ||
     '<some binary data placeholder>';
 
 export {
-    fetchAttachments,
-    fetchAttachmentContent,
-    pickRandom
+    generateFakeAttachments,
+    generateFakeAttachmentContent
 };
