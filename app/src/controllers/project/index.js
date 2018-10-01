@@ -4,6 +4,7 @@ export {
   toggleDisplayFilterOnLaunchesAction,
   fetchAutoAnalysisConfigurationAction,
   updateAutoAnalysisConfigurationAction,
+  deleteDisplayFilterOnLaunchesAction,
   updateProjectEmailConfig,
 } from './actionCreators';
 export { projectReducer } from './reducer';

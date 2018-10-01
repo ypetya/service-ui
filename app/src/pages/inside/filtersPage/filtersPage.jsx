@@ -6,6 +6,7 @@ import {
   withFilter,
   filtersPaginationSelector,
   fetchFiltersAction,
+  deleteFilterAction,
   filtersSelector,
   loadingSelector,
   DEFAULT_PAGE_SIZE,
@@ -21,7 +22,11 @@ import { PaginationToolbar } from 'components/main/paginationToolbar';
 import { PageLayout, PageHeader, PageSection } from 'layouts/pageLayout';
 import { showModalAction } from 'controllers/modal';
 import { withSorting, SORTING_ASC } from 'controllers/sorting';
-import { userFiltersSelector, toggleDisplayFilterOnLaunchesAction } from 'controllers/project';
+import {
+  userFiltersSelector,
+  toggleDisplayFilterOnLaunchesAction,
+  deleteDisplayFilterOnLaunchesAction,
+} from 'controllers/project';
 import { fetch } from 'common/utils';
 import { URLS } from 'common/urls';
 import { NoFiltersBlock } from './noFiltersBlock';
@@ -49,7 +54,9 @@ const messages = defineMessages({
   {
     showModalAction,
     toggleDisplayFilterOnLaunches: toggleDisplayFilterOnLaunchesAction,
+    deleteDisplayFilterOnLaunchesAction,
     fetchFiltersAction,
+    deleteFilterAction,
   },
 )
 @withSorting({
@@ -124,9 +131,12 @@ export class FiltersPage extends Component {
     }).then(this.props.fetchFiltersAction);
 
   deleteFilter = (id) => {
+    this.props.deleteDisplayFilterOnLaunchesAction;
     fetch(URLS.filter(this.props.activeProject, id), {
       method: 'delete',
-    }).then(this.props.fetchFiltersAction);
+    })
+      .then()
+      .then(this.props.fetchFiltersAction);
   };
 
   render() {

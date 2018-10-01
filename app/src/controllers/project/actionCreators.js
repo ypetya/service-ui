@@ -52,6 +52,14 @@ export const toggleDisplayFilterOnLaunchesAction = (filter) => (dispatch, getSta
   dispatch(updateProjectPreferencesAction(projectPreferencesSelector(getState())));
 };
 
+export const deleteDisplayFilterOnLaunchesAction = (filter) => (dispatch, getState) => {
+  const pref = projectPreferencesSelector(getState());
+  debugger;
+  if (pref.isSet) {
+    toggleDisplayFilterOnLaunchesAction(filter)(dispatch, getState);
+  }
+};
+
 const fetchProjectPreferencesAction = (projectId) => (dispatch, getState) =>
   fetch(URLS.projectPreferences(projectId, userIdSelector(getState()))).then((project) => {
     dispatch(fetchProjectPreferencesSuccessAction(project));
